@@ -9,5 +9,6 @@ class Solution:
             elif letters[mid] <= target:
                 left = mid + 1
         if left < len(letters):
+            # Возвращаем letters[left], потому что это первый элемент, подходящий под > target
             return letters[left]
         return letters[0]
