@@ -1,12 +1,13 @@
-def search(nums, target, left, right):
+def search(nums, target):
     # Предположим, nums отсортирован
-    if left > right: # базовый случай, если внутри диапазона пусто (элемент не найден), возвращаем -1
-        return -1
-
-    middle = (left + right) // 2
-
-    if nums[middle] == target:
-        return middle
-    elif nums[middle] > target:
-        return search(nums, target, left, middle - 1) # переход к левой половине
-    return search(nums, target, middle + 1, right) # переход к правой половине
+    left = 0
+    right = len(nums) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] == target:
+            return mid
+        elif nums[mid] > target:
+            right = mid - 1 # переход к левой половине
+        elif nums[mid] < target:
+            left = mid + 1 # переход к правой половине
+    return -1
