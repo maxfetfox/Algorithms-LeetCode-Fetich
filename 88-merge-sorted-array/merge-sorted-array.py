@@ -1,8 +1,8 @@
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         i, j, ind = m - 1, n - 1, m + n - 1
+        temp_lst = nums1[:m]
         while i >= 0 or j >= 0:
-            temp_lst = nums1[:m]
             if j < 0:
                 nums1[ind] = temp_lst[i]
                 i -= 1
