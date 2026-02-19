@@ -1,5 +1,6 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
+        # Сравнение и объединение отсортированых половин
         def merge(A, l, m, r):
             nl = m - l + 1
             nr = r - m
@@ -33,6 +34,7 @@ class Solution:
                 j += 1
                 k += 1
 
+        # Разбиение массива на более маленькие массивы. При минимальной длине просиходит переход к дальнейшему шагу – сравнению и объединению
         def merge_sort(A, l, r):
             if l >= r:
                 return
