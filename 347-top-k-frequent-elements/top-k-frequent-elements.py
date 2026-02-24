@@ -1,6 +1,6 @@
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        frequent_elements = {}
+        frequent_elements = {} # для такого типа задач удобно использовать словарь
         for x in nums:
             if x in frequent_elements:
                 frequent_elements[x] += 1
