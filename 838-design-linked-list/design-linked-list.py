@@ -12,6 +12,7 @@ class MyLinkedList:
         if index < 0 or index >= self.size:
             return -1
 
+        # перемещение к необходимому узлу
         pointer = self.head
         for _ in range(index):
             pointer = pointer.next
@@ -20,7 +21,7 @@ class MyLinkedList:
     def addAtHead(self, val: int) -> None:
         node = self.Node(val)
 
-        if self.size == 0:
+        if self.size == 0: # если список пуст, то и голова и хвост становятся новым узлом
             self.head = self.tail = node
         else:
             node.next = self.head
@@ -42,10 +43,10 @@ class MyLinkedList:
         self.size += 1
 
     def addAtIndex(self, index: int, val: int) -> None:
-        if index < 0:
+        if index < 0: # отрицательный индекс – вставляем в head
             index = 0
 
-        if index > self.size:
+        if index > self.size: # invalid index
             return
 
         if index == 0:
@@ -63,7 +64,7 @@ class MyLinkedList:
         node = self.Node(val)
         prev_node = pointer.prev
 
-        prev_node.next = node
+        prev_node.next = node # вставка узла между prev node и pointer
         node.prev = prev_node
         node.next = pointer
         pointer.prev = node
@@ -96,16 +97,8 @@ class MyLinkedList:
         for _ in range(index):
             pointer = pointer.next
 
+        # соединение предыдущих и следующих узлов
         pointer.prev.next = pointer.next
         pointer.next.prev = pointer.prev
 
         self.size -= 1
-
-
-# Your MyLinkedList object will be instantiated and called as such:
-# obj = MyLinkedList()
-# param_1 = obj.get(index)
-# obj.addAtHead(val)
-# obj.addAtTail(val)
-# obj.addAtIndex(index,val)
-# obj.deleteAtIndex(index)
