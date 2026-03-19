@@ -7,7 +7,7 @@ class MyCircularQueue:
     def enQueue(self, value: int) -> bool:
         if not self.isFull():
             self.q[self.tail] = value
-            self.tail = (self.tail + 1) % self.size
+            self.tail = (self.tail + 1) % self.size # убирает необходимость доп. проверок
             self.count += 1
             return True
         return False
@@ -34,14 +34,3 @@ class MyCircularQueue:
 
     def isFull(self) -> bool:
         return self.count == self.size
-
-
-
-# Your MyCircularQueue object will be instantiated and called as such:
-# obj = MyCircularQueue(k)
-# param_1 = obj.enQueue(value)
-# param_2 = obj.deQueue()
-# param_3 = obj.Front()
-# param_4 = obj.Rear()
-# param_5 = obj.isEmpty()
-# param_6 = obj.isFull()
