@@ -1,17 +1,23 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        h = [0] * 26
+        h = {}
 
         if len(s) != len(t):
             return False
 
         for letter in s:
-            h[ord(letter) - 97] += 1
+            if h.get(letter) is not None:
+                h[letter] += 1
+            else:
+                h[letter] = 1
 
         for letter in t:
-            h[ord(letter) - 97] -= 1
+            if h.get(letter) is not None:
+                h[letter] -= 1
+            else:
+                return False
 
-        for num in h:
+        for num in h.values():
             if num != 0:
                 return False
 
