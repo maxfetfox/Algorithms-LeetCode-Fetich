@@ -22,7 +22,8 @@ class Solution:
 
                 if left is None and right is None:
                     return None
-
+                
+                # дети встают на замену
                 elif left is None:
                     return right
 
@@ -30,10 +31,12 @@ class Solution:
                     return left
 
                 else:
+                    # наименьший ребёнок в правом узле
                     successor = right
                     while successor.left is not None:
                         successor = successor.left
 
+                    # заменяем значение в текущем узле на значение узла ребёнка и затем удаляем ребёнка
                     current.val = successor.val
                     current.right = BSTDel(current.right, current.val)
             return current
