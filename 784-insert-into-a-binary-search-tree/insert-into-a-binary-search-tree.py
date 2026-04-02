@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        # если дерево пусто, корень становится первым узлом
         if root is None:
             return TreeNode(val)
         def BSTInsertion(current, value):
