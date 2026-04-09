@@ -29,17 +29,17 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
 
-        fresh = 0
+        fresh = 0 # сразу вводим счётчик свежих апельсинов
 
         for i in range(m):
             for j in range(n):
                 current_element = grid[i][j]
                 if current_element == 2:
-                    queue.push((i, j))
+                    queue.push((i, j)) # то, что будет проверяться
                 elif current_element == 1:
                     fresh += 1
 
-        if fresh == 0:
+        if fresh == 0: # если свежих не оказалось – возвращаем 0
             return 0
 
         minutes = 0
@@ -48,7 +48,7 @@ class Solution:
             q_size = queue.size()
             has_rotted = False
 
-            for _ in range(q_size):
+            for _ in range(q_size): # данный цикл репрезентирует слой вокруг элемента
                 current_item = queue.pop()
                 row, col = current_item
 
