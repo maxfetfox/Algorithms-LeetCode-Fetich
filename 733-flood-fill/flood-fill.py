@@ -31,19 +31,21 @@ class Solution:
 
         default_color = image[sr][sc]
 
-        if default_color == color:
+        if default_color == color: # если цель была достигнута сразу – возвращаем image
             return image
 
         queue = MyQueue()
-        queue.push((sr, sc))
+        queue.push((sr, sc)) # добавляем первый элемент в очередь
 
-        image[sr][sc] = color
+        image[sr][sc] = color # сразу меняем цвет
 
         while not queue.empty():
-            current_item = queue.pop()
+            current_item = queue.pop() # достаём следующий элемент из очереди
 
             row = current_item[0]
             col = current_item[1]
+            
+            # проверка элементов слева, справа, сверху и снизу
 
             if 0 <= row - 1 < size_m:
                 if image[row - 1][col] == default_color:
@@ -61,5 +63,5 @@ class Solution:
                 if image[row][col + 1] == default_color:
                     image[row][col + 1] = color
                     queue.push((row, col + 1))
-        
+
         return image
